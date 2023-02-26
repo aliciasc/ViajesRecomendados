@@ -44,9 +44,21 @@ app.put('/users', isAuth, editUser);
 app.put('/users/photo', isAuth, editUserPhoto);
 
 
+/* 
+********************
+***Recommendation***
+********************
+*/
 
-//Recommendations controllers
+
+
+//Recomendation controllers
+const newRecommendation = require('./controllers/recommendations/newRecommendation');
 const { listRecommendations, getRecommendation } = require('./controllers/recommendations');
+
+
+// Create a new recommendation.
+app.post('/recommendation',isAuth, newRecommendation);
 
 //List recommendations.
 app.get('/recommendations', isAuthOptional, listRecommendations);
