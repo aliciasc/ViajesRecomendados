@@ -1,10 +1,11 @@
 {
   "name": "viajesrecomendados",
   "version": "1.0.0",
-  "description": "",
+  "description": "INSTALAR  -Crear una base de datos vacía en una instancia de MySQL local.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +24,13 @@
   "devDependencies": {
     "eslint": "^8.34.0",
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliciasc/ViajesRecomendados.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aliciasc/ViajesRecomendados/issues"
+  },
+  "homepage": "https://github.com/aliciasc/ViajesRecomendados#readme"
 }

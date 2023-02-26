@@ -19,6 +19,7 @@ app.use(fileUpload());
 //////////////////////////
 //Personalized middlewares.
 const isAuth = require('./middlewares/isAuth');
+const isAuthOptional = require('./middlewares/isAuthOptional');
 
 //Users controllers
 const newUser = require('./controllers/users/newUser');
@@ -41,6 +42,18 @@ app.put('/users', isAuth, editUser);
 
 //Update user photo.
 app.put('/users/photo', isAuth, editUserPhoto);
+
+
+
+//Recommendations controllers
+const { listRecommendations, getRecommendation } = require('./controllers/recommendations');
+
+//List recommendations.
+app.get('/recommendations', isAuthOptional, listRecommendations);
+
+//Get recommendation.
+app.get('/recommendations/:idRecommendation', isAuthOptional, getRecommendation);
+
 
 //Middleware error.
 app.use((err, req, res, next) => {
