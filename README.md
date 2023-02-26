@@ -9,6 +9,8 @@ INSTALAR
 
 -Ejecutar npm run dev o npm start para lanzar el servidor.
 
+
+
 Base de datos
 users: id, name, email, password, biography, photo, createdAt.
 
