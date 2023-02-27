@@ -10,10 +10,11 @@ const selectRecommendationsQuery = async (idUser) => {
                 SELECT
                     R. *,
                     U.name AS user,
-                    IFNULL (R.idUser = ?, 0) AS owner,
-                FROM recommendations R
+                    IFNULL (R.idUser = ?, 0) AS owner
+                FROM recommendation R
                 INNER JOIN users U ON U.id = R.idUser
-            `
+            `,
+            [idUser] 
         );
         
         return recommendations;

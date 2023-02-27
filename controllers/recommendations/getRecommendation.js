@@ -3,17 +3,17 @@ const selectRecommendationByIdQuery = require('../../db/queries/recommendations/
 const getRecommendation = async (req, res, next) => {
     try {
         const { idRecommendation } = req.params;
-        const recommendations = await selectRecommendationByIdQuery(idRecommendation, req.user?.id);
+        const recommendations = await selectRecommendationByIdQuery( idRecommendation, req.user?.id, );
         
         res.send({
             status: 'ok',
             data: {
-                recommendation,
+                recommendations,
             }
         });
 
-    } catch (error) {
-        next(error);
+    } catch (err) { 
+        next(err);
         
     }
 };

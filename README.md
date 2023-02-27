@@ -36,9 +36,9 @@ PUT [/users/photo] - Editar la foto del usuario. TOKEN ✅
 
 
 Endpoints recomendaciones
-POST [/recommendations] - Crea una recomendación. TOKEN 
+POST [/recommendations] - Crea una recomendación. TOKEN ✅
 
-GET [/recommendation] - Retorna el listado de recomendaciones. ?????PREGUNTAR LEIRE?????
+GET [/recommendation] - Retorna el listado de recomendaciones. ✅
 
 GET [/recommendation/:idRecommendation] - Buscar recomendaciones por lugar o categoría.
 
