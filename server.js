@@ -55,6 +55,7 @@ app.put('/users/photo', isAuth, editUserPhoto);
 const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation } = require('./controllers/recommendations');
 
 
+
 //Create recommendation.
 app.post('/recommendations', isAuth, newRecommendation);
 
