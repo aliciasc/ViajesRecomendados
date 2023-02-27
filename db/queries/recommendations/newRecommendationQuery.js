@@ -1,6 +1,6 @@
 const getDB = require('../../getDB');
 
-const newRecommendationQuery = async ( tittle, category, place, summary, text ,photo, idUser ) => {
+const newRecommendationQuery = async ( title, category, place, summary, text ,photo, idUser ) => {
     let connection;
 
     try {
