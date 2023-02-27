@@ -2,7 +2,7 @@ const getDB = require('../../getDB');
 const { generaterError } = require('../../../helpers');
 
 
-const selectRecommendationByIdQuery = async (idRecommendation, idUser) => {
+const selectRecommendationByIdQuery = async ( idRecommendation, idUser) => {
     let connection;
     try {
         connection = await getDB();
@@ -12,11 +12,11 @@ const selectRecommendationByIdQuery = async (idRecommendation, idUser) => {
                 SELECT
                     R. *,
                     U.name AS user,
-                    IFNULL (R.idUser = ?, 0) AS owner,
-                FROM recommendations R
+                    IFNULL (R.idUser = ?, 0) AS owner
+                FROM recommendation R
                 INNER JOIN users U ON U.id = R.idUser
                 WHERE R.id = ?
-            `
+            `,
            [idUser, idRecommendation] 
         );
         if (recommendations.length < 1) {

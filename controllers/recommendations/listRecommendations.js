@@ -11,8 +11,8 @@ const listRecommendations = async (req, res, next) => {
             }
         });
 
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
         
     }
 };

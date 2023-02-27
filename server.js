@@ -54,19 +54,30 @@ app.put('/users/photo', isAuth, editUserPhoto);
 //Recommendations controllers
 const { listRecommendations, getRecommendation, newRecommendation } = require('./controllers/recommendations');
 
+
+//Recomendation controllers
+const newRecommendation = require('./controllers/recommendations/newRecommendation');
+const { listRecommendations, getRecommendation, voteRecommendation } = require('./controllers/recommendations');
+
 //Create recommendation.
 app.post('/recommendations', isAuth, newRecommendation);
+
 //List recommendations.
 app.get('/recommendations', isAuthOptional, listRecommendations);
 
 //Get recommendation.
 app.get('/recommendations/:idRecommendation', isAuthOptional, getRecommendation);
 
+
+//Vote the recommendation.
+app.post('/recommendations/:idRecommendation/vote', isAuth, voteRecommendation);
+
 //Comments controllers
 const { newComment } = require('./controllers/comments');
 
 //Create comment.
 app.post('/comments', isAuth, newComment);
+
 
 
 //Middleware error.
