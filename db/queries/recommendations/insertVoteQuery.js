@@ -8,7 +8,7 @@ const insertVoteQuery = async (idUser, idRecommendation, value) => {
     try {
         connection = await getDB();
 
-        // Comprobamos si ya se ha votado esta entrada.
+        //Check if the recommendation is voted.
         const [vote] = await connection.query(
             `SELECT id FROM vote WHERE idUser = ? AND idRecommendation = ?`,
             [idUser, idRecommendation]
@@ -19,7 +19,7 @@ const insertVoteQuery = async (idUser, idRecommendation, value) => {
         }
 
         await connection.query(
-            `INSERT INTO votes (idUser, idRecommendation, value) VALUES (?, ?, ?)`,
+            `INSERT INTO vote (idUser, idRecommendation, value) VALUES (?, ?, ?)`,
             [idUser, idRecommendation, value]
         );
     } finally {

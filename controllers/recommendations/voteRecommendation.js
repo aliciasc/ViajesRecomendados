@@ -11,8 +11,8 @@ const voteRecommendation = async (req, res, next) => {
 
         const recommendation = await selectRecommendationByIdQuery(idRecommendation, req.user.id);
 
-        // Lanzamos un error si somos los dueños del viaje. No queremos permitir votar nuestras propias entradas.
-        if (!recommendation.owner) {
+        //Throw an error if we are the recommendation owner.
+        if (recommendation[0].owner) {
             generateError('You cannot vote on your own recommendations.', 401);
         }
 
@@ -20,16 +20,16 @@ const voteRecommendation = async (req, res, next) => {
             generateError('Missing fields.', 400);
         }
 
-        // Array con los votos válidos.
+        //Array with valid votes.
         const validVotes = [1, 2, 3, 4, 5];
 
-        // Si el voto no es un valor válido lanzamos un error.
+        //Throw an error if the vote is not valid.
         if (!validVotes.includes(vote)) {
             generateError('Invalid vote', 400);
         }
 
-        // Votamos la entrada.
-        await insertVoteQuery(idRecommendation, req.user.id, vote);
+        //Vote the recommendation.
+        await insertVoteQuery(req.user.id, idRecommendation, vote);
 
 
         res.send({

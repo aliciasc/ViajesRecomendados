@@ -23,10 +23,6 @@ const isAuthOptional = async (req, res, next) => {
             req.user = userInfo;
         }
 
-
-        // Add a new feature to the request.
-        req.user = userInfo;
-
         // Pass control to the next middleware or controller function.
         next();
     } catch (err) {

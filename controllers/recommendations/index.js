@@ -1,13 +1,13 @@
+const newRecommendation = require('./newRecommendation');
 const listRecommendations = require('./listRecommendations');
 const getRecommendation = require('./getRecommendation');
 const voteRecommendation = require('./voteRecommendation');
-const newRecommendation = require('./newRecommendation');
+
 
 
 module.exports = {
+    newRecommendation,
     listRecommendations,
     getRecommendation,
-    voteRecommendation,
-    newRecommendation
-
+    voteRecommendation
 };
