@@ -52,10 +52,9 @@ app.put('/users/photo', isAuth, editUserPhoto);
 
 
 //Recommendations controllers
-const { listRecommendations, getRecommendation, newRecommendation } = require('./controllers/recommendations');
+const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation } = require('./controllers/recommendations');
 
-//Recomendation controllers
-const { listRecommendations, getRecommendation, voteRecommendation } = require('./controllers/recommendations');
+
 
 //Create recommendation.
 app.post('/recommendations', isAuth, newRecommendation);
@@ -65,7 +64,6 @@ app.get('/recommendations', isAuthOptional, listRecommendations);
 
 //Get recommendation.
 app.get('/recommendations/:idRecommendation', isAuthOptional, getRecommendation);
-
 
 //Vote the recommendation.
 app.post('/recommendations/:idRecommendation/vote', isAuth, voteRecommendation);

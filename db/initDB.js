@@ -38,7 +38,7 @@ const createTables = async () => {
         CREATE TABLE IF NOT EXISTS recommendation (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
             idUser INT UNSIGNED NOT NULL,
-            tittle VARCHAR(100),
+            title VARCHAR(100),
             category VARCHAR(100),
             place VARCHAR(100),
             summary VARCHAR(500) ,

@@ -7,9 +7,7 @@ const newRecommendation = require('./newRecommendation');
 module.exports = {
     listRecommendations,
     getRecommendation,
-
     voteRecommendation,
-
     newRecommendation
 
 };
