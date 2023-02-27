@@ -4,6 +4,7 @@ const { generateError, saveImg} = require('../../helpers');
 
 const newRecommendation = async (req, res, next) => {
     try {
+
         const { title, category, place, summary, text } = req.body;
 
         if (!title || !category || !place || !summary || !text ) {

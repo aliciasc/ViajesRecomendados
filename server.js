@@ -44,6 +44,12 @@ app.put('/users', isAuth, editUser);
 app.put('/users/photo', isAuth, editUserPhoto);
 
 
+/* 
+********************
+***Recommendation***
+********************
+*/
+
 
 //Recommendations controllers
 const { listRecommendations, getRecommendation, newRecommendation } = require('./controllers/recommendations');

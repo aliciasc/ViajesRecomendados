@@ -25,28 +25,27 @@ const createTables = async () => {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS users (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(100) NOT NULL,
+            name VARCHAR(100),
+            email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
+            biography VARCHAR(100),
             photo VARCHAR(100),
-            biography VARCHAR(500), 
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP, 
-            modifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )
-        `);
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
+    `);
 
-        await connection.query(`
+    await connection.query(`
         CREATE TABLE IF NOT EXISTS recommendation (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-            idUser INT UNSIGNED NOT NULL, 
-            title VARCHAR(100) NOT NULL,
-            category VARCHAR(100) NOT NULL,
-            place VARCHAR(100) NOT NULL,
-            summary VARCHAR(250) NOT NULL,
-            text VARCHAR(700) NOT NULL,
-            photo VARCHAR(100) NOT NULL,
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (idUser) REFERENCES users(id)
+            idUser INT UNSIGNED NOT NULL,
+            tittle VARCHAR(100),
+            category VARCHAR(100),
+            place VARCHAR(100),
+            summary VARCHAR(500) ,
+            text VARCHAR(100),
+            photo VARCHAR(100),
+            FOREIGN KEY (idUser) REFERENCES users(id),
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
         )
         `);
 
