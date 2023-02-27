@@ -7,13 +7,15 @@ const newRecommendationQuery = async ( tittle, category, place, summary, text ,p
         connection = await getDB();
 
         const [recommendation] = await connection.query(
-            `INSERT INTO recommendation ( tittle, category, place, summary, text ,photo, idUser) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            [ tittle, category, place, summary, text ,photo, idUser ]
+
+            `INSERT INTO recommendation ( title, category, place, summary, text, photo, idUser) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [ title, category, place, summary, text, photo, idUser ]
+
         );
 
         return {
             id: recommendation.insertId,
-            tittle, category, place, summary, text ,photo,
+            title, category, place, summary, text, photo,
             idUser,
             createdAt: new Date(),
         };
