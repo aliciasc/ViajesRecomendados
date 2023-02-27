@@ -55,7 +55,6 @@ app.put('/users/photo', isAuth, editUserPhoto);
 const { listRecommendations, getRecommendation, newRecommendation } = require('./controllers/recommendations');
 
 //Recomendation controllers
-const newRecommendation = require('./controllers/recommendations/newRecommendation');
 const { listRecommendations, getRecommendation, voteRecommendation } = require('./controllers/recommendations');
 
 //Create recommendation.
