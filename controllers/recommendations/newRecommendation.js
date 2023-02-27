@@ -4,9 +4,10 @@ const { generateError, saveImg} = require('../../helpers');
 
 const newRecommendation = async (req, res, next) => {
     try {
-        const { tittle, category, place, summary, text } = req.body;
 
-        if (!tittle || !category || !place || !summary || !text ) {
+        const { title, category, place, summary, text } = req.body;
+
+        if (!title || !category || !place || !summary || !text ) {
             generateError('Faltan campos', 400);
         }
 
@@ -16,8 +17,8 @@ const newRecommendation = async (req, res, next) => {
             photo = await saveImg(req.files.photo, 500);
         }
 
-        // Creamos el tweet y obtenemos sus datos.
-        const recommendation = await newRecommendationQuery( tittle, category, place, summary, text ,photo, req.user.id);
+        // Creamos la recomendación y obtenemos sus datos.
+        const recommendation = await newRecommendationQuery( title, category, place, summary, text ,photo, req.user.id);
 
         res.send({
             status: 'ok',
