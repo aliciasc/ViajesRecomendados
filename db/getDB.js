@@ -1,7 +1,7 @@
 const mysql = require('mysql2/promise');
 
 //Obtenemos las variables de entorno requeridas
-const {MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB } = process.env;
+const {MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
 
 //Variable que almacena un grupo de conexiones (como un array)
 let pool;
@@ -19,8 +19,8 @@ const getDB = async () => {
                 connectionLimit: 10,
                 host: MYSQL_HOST,
                 user: MYSQL_USER,
-                password: MYSQL_PASS,
-                database: MYSQL_DB,
+                password: MYSQL_PASSWORD,
+                database: MYSQL_DATABASE,
                 timezone: 'Z',
             });
         }
