@@ -23,8 +23,6 @@ const isAuthOptional = async (req, res, next) => {
             req.user = userInfo;
         }
 
-        let userInfo;
-
 
         // Add a new feature to the request.
         req.user = userInfo;
