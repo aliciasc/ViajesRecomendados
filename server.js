@@ -82,15 +82,18 @@ app.delete('/recommendations/:idRecommendation', isAuth, deleteRecommendation);
 
 /* 
 ********************
-***Comment***
+*******Comment******
 ********************
 */
 
 //Comments controllers
-const { newComment } = require('./controllers/comments');
+const { newComment, deleteComment } = require('./controllers/comments');
 
 //Create comment.
 app.post('/comments/:idRecommendation/comment', isAuth, newComment);
+
+//Remove a recommendation.
+app.delete('/comments/:idRecommendation/comment', isAuth, deleteComment);
 
 //Middleware error.
 app.use((err, req, res, next) => {
