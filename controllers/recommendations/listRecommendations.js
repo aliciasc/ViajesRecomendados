@@ -2,7 +2,10 @@ const selectRecommendationsQuery = require('../../db/queries/recommendations/sel
 
 const listRecommendations = async (req, res, next) => {
     try {
-        const recommendations = await selectRecommendationsQuery(req.user?.id);
+        //importamos la query que nos devuelve las recomendaciones filtadas por categoria y lugar
+        const { category, place } = req.query;
+
+        const recommendations = await selectRecommendationsQuery(req.user?.id, category, place);
         
         res.send({
             status: 'ok',

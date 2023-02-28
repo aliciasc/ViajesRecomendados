@@ -1,7 +1,8 @@
 const getDB = require('../../getDB');
 
-const selectRecommendationsQuery = async (idUser) => {
+const selectRecommendationsQuery = async (idUser, category = '', place = '') => {
     let connection;
+    
     try {
         connection = await getDB();
 
@@ -16,8 +17,9 @@ const selectRecommendationsQuery = async (idUser) => {
                 INNER JOIN users U ON U.id = R.idUser
                 LEFT JOIN vote V ON V.idRecommendation = R.id
                 GROUP BY R.id
+                WHERE R.category LIKE ? AND R.place LIKE ?
             `,
-            [idUser] 
+            [idUser, `%${category}%`, `%${place}%`] 
         );
         
         return recommendations;
