@@ -10,7 +10,7 @@ try {
   // Try to get a free connection. 
   connection = await getDB(); 
 
-  //Intentamos obtener un usuario con el email dado.
+  //Get a user with the email.
   const [users] = await connection.query(
     `SELECT id FROM users WHERE email = ?`,
     [email]
@@ -21,10 +21,10 @@ try {
     generateError('There is an user with the same email.', 403);
   }
 
-  //Encriptamos contraseña de usuario.
+  //Encrypt user password.
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  //Insertamos el usuario en la base de datos.
+  //Insert the user in the database.
   await connection.query(
     `INSERT INTO users (name, email, password, photo, biography) VALUE(?, ?, ?, ?, ?)`,
     [name, email, hashedPassword, photo, biography]

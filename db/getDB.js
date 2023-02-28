@@ -1,18 +1,18 @@
 const mysql = require('mysql2/promise');
 
-//Obtenemos las variables de entorno requeridas
+//Get the required environment variables.
 const {MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
 
-//Variable que almacena un grupo de conexiones (como un array)
+//Variable that stores a group of connections.
 let pool;
 
 
-//Función que retorna una conexión libre con la base de datos.
+//Function that returns a free connection to the database.
 const getDB = async () => {
 
     try{
 
-        //Si no hay un grupo de conexiones lo creamos.
+        //Create a connection pool if there isn't one.
         if (!pool) {
 
             pool = mysql.createPool({
@@ -25,7 +25,7 @@ const getDB = async () => {
             });
         }
 
-        //Retornamos una de las 10 conexiones libres conla base de datos.
+        //We return one of the 10 free connections to the database.
         return await pool.getConnection();
 
     } catch (err) {
@@ -33,5 +33,5 @@ const getDB = async () => {
     }
 };
 
-//Exportamos la función anterior.
+//Export the previous function.
 module.exports = getDB;

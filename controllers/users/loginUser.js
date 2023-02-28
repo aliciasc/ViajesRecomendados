@@ -11,28 +11,28 @@ const loginUser = async (req, res, next) => {
         //Get the email and the password.
         const {email, password} = req.body;
 
-        //Si falta algún dato lanzamos un error.
+        //Throw error if any data is missing.
         if (!email || !password) {
             generateError('Missing fields.', 400);
         }
 
-        //Obtenemos al usuario con el email.
+        //Get the user with the email.
         const user = await selectUserByEmailQuery(email);
 
-        //Comprobar si la contraseña es válida.
+        //Check if the password is valid.
         const validPassword = await bcrypt.compare(password, user.password);
 
-        //Si las confraseñas coinciden.
+        //Throw error if passwords do not match.
         if (!validPassword) {
             generateError('Wrong password.',401);
         }
 
-        //Objeto con información para token.
+        //Object with information for token.
         const userInfo = {
             id: user.id,
         };
 
-        //Creamos token.
+        //Create token.
         const token = jwt.sign(userInfo, process.env.SECRET, {
             expiresIn: '5d',
         });
