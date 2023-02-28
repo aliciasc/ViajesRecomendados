@@ -1,5 +1,5 @@
 const getDB = require('../../getDB');
-const { generaterError } = require('../../../helpers');
+const { generateError } = require('../../../helpers');
 
 
 const selectRecommendationByIdQuery = async ( idRecommendation, idUser) => {
@@ -11,7 +11,7 @@ const selectRecommendationByIdQuery = async ( idRecommendation, idUser) => {
             `
                 SELECT
                     R. *,
-                    AVG (IFNULL (V. value, 0)) AS vote,
+                    AVG (IFNULL (V. value, 0)) AS media,
                     U.name AS user,
                     IFNULL (R.idUser = ?, 0) AS owner
                 FROM recommendation R
@@ -20,10 +20,10 @@ const selectRecommendationByIdQuery = async ( idRecommendation, idUser) => {
                 WHERE R.id = ?
                 GROUP BY R.id
             `,
-           [idUser, idRecommendation] 
+            [idUser, idRecommendation] 
         );
         if (recommendations.length < 1) {
-            generaterError('La recomendación no existe',404);
+            generateError('Recommendation does not exist.',404);
         }
         
         return recommendations;
