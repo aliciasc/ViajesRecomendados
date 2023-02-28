@@ -12,6 +12,13 @@ try {
         [idRecommendation]
         );
 
+    //Delete the comments of the recommendation.
+    await connection.query(
+        `DELETE FROM comment WHERE idRecommendation = ?`,
+        [idRecommendation]
+        );    
+
+
         //Delete the recommendation after delete the votes.
         await connection.query(
             `DELETE FROM recommendation WHERE id = ?`,
