@@ -38,8 +38,8 @@ GET [/recommendation/:idRecommendation] - Buscar recomendaciones por lugar o cat
 
 GET [/recommendation/:idRecommendation] - Ver detalle de una recomendación. ✅
 
-POST [/recommendation/:idRecommendation/comment] - Añade un comentario en la recomendación. TOKEN
+POST [/recommendation/:idRecommendation/comment] - Añade un comentario en la recomendación. TOKEN  ✅
 
-POST [/recommendation/:idRecommendation/votes] - Vota una recomendación (entre 1 y 10). TOKEN
+POST [/recommendation/:idRecommendation/votes] - Vota una recomendación (entre 1 y 10). TOKEN  ✅
 
 DELETE [/recommendation] - Eliminar una recomendación. TOKEN
