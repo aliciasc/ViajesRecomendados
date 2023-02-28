@@ -6,7 +6,6 @@ const editUser = async (req, res, next) => {
     try {
         let {name, email} = req.body;
 
-        //Si faltan todas. PREGUNTAR!!!!!!!!!!!
         if (!name && !email) {
             generateError('Missing fields', 400); 
         }

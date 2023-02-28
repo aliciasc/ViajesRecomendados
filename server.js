@@ -7,19 +7,27 @@ const morgan = require('morgan');
 //Create the server.
 const app = express ();
 
-//Middelware que muestra información por consola sobre la petición entrante.
+//Middelware that displays information on the console about the incoming request.
 app.use(morgan('dev'));
 
-//Middleware que permite deserializar un body en formato "raw" creando la propiedad "body" en el objeto "request".
+//Middleware that allows deserializing a body in "raw" format by creating the "body" property on the "request" object.
 app.use(express.json());
 
-//Middleware que permite deserializar un body en formato "form-data" creando la propiedad "body" y "files" en el objeto "request".
+//Middleware that allows to deserialize a body in "form-data" format by creating the "body" property and "files" in the "request" object.
 app.use(fileUpload());
 
-//////////////////////////
+
+/*************************/
 //Personalized middlewares.
 const isAuth = require('./middlewares/isAuth');
 const isAuthOptional = require('./middlewares/isAuthOptional');
+
+
+/* 
+********************
+*******Users*******
+********************
+*/
 
 //Users controllers
 const newUser = require('./controllers/users/newUser');
@@ -50,7 +58,6 @@ app.put('/users/photo', isAuth, editUserPhoto);
 ********************
 */
 
-
 //Recommendations controllers
 const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation, deleteVote } = require('./controllers/recommendations');
 
@@ -67,15 +74,21 @@ app.get('/recommendations/:idRecommendation', isAuthOptional, getRecommendation)
 //Vote the recommendation.
 app.post('/recommendations/:idRecommendation/vote', isAuth, voteRecommendation);
 
+//Remove a vote.
+app.delete('/recommendations/:idRecommendation/vote', isAuth, deleteVote);
+
+
+/* 
+********************
+***Recommendation***
+********************
+*/
+
 //Comments controllers
 const { newComment } = require('./controllers/comments');
 
 //Create comment.
 app.post('/comments/:idRecommendation/comment', isAuth, newComment);
-
-//Remove a vote.
-app.delete('/recommendations/:idRecommendation/vote', isAuth, deleteVote);
-
 
 
 
@@ -89,7 +102,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-//Middleware de ruta no encontrada.
+//Middleware path not found.
 app.use((req, res) => {
     res.status(404).send({
         status: 'error',

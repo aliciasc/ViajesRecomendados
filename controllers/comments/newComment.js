@@ -10,7 +10,7 @@ const newComment = async (req, res, next) => {
             generateError('Faltan campos', 400);
         }
 
-        // Create comment and get the dates.
+        // Create comment and get the data.
         const Comment = await newCommentQuery( comment, req.user.id,idRecommendation);
 
         res.send({

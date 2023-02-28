@@ -17,7 +17,7 @@ const newRecommendation = async (req, res, next) => {
             photo = await saveImg(req.files.photo, 500);
         }
 
-        // Creamos la recomendación y obtenemos sus datos.
+        //Create the recommendation and get the data.
         const recommendation = await newRecommendationQuery( title, category, place, summary, text ,photo, req.user.id);
 
         res.send({

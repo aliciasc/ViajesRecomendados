@@ -1,17 +1,17 @@
-//No es necesario replicar este código en "getDB.js"
+//You don't need to replicate this code in "getDB.js".
 require('dotenv').config();
 
-//Importamos la función que permite obtener una conexión con la base de datos.
+//Import the function that allows to get a connection with the database.
 const getDB = require('./getDB');
 
-//Función asincrona
+//Asynchronous function.
 const createTables = async () => {
 
-    //Variable que almacenará una conexión libre con la base de datos.
+    //Variable that will store a free connection to the database.
     let connection;
 
     try{
-        //Intentamos obtener una conexión libre.
+        //Get a free connection.
         connection = await getDB();
 
         console.log('Borrando tablas...');
@@ -79,10 +79,10 @@ console.log('Tablas creadas');
 
     } finally {
 
-        //Si existe conexión la liberamos.
+        //Release the connection if it exists.
         if (connection) connection.release();
         
-        //Cerramos el proceso.
+        //Close the process.
         process.exit();
     }
 };
