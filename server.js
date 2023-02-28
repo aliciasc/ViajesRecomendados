@@ -59,8 +59,7 @@ app.put('/users/photo', isAuth, editUserPhoto);
 */
 
 //Recommendations controllers
-const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation, deleteVote } = require('./controllers/recommendations');
-
+const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation, deleteVote, deleteRecommendation } = require('./controllers/recommendations');
 
 //Create recommendation.
 app.post('/recommendations', isAuth, newRecommendation);
@@ -77,10 +76,13 @@ app.post('/recommendations/:idRecommendation/vote', isAuth, voteRecommendation);
 //Remove a vote.
 app.delete('/recommendations/:idRecommendation/vote', isAuth, deleteVote);
 
+//Remove a recommendation.
+app.delete('/recommendations/:idRecommendation', isAuth, deleteRecommendation);
+
 
 /* 
 ********************
-***Recommendation***
+***Comment***
 ********************
 */
 
@@ -89,8 +91,6 @@ const { newComment } = require('./controllers/comments');
 
 //Create comment.
 app.post('/comments/:idRecommendation/comment', isAuth, newComment);
-
-
 
 //Middleware error.
 app.use((err, req, res, next) => {
@@ -109,7 +109,6 @@ app.use((req, res) => {
         message: 'Ruta no encontrada',
     });
 });
-
 
 app.listen(process.env.PORT, () => {
     console.log(`Server listening at http://localhost:${process.env.PORT}`);

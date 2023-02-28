@@ -3,6 +3,7 @@ const listRecommendations = require('./listRecommendations');
 const getRecommendation = require('./getRecommendation');
 const voteRecommendation = require('./voteRecommendation');
 const deleteVote = require('./deleteVote');
+const deleteRecommendation = require("./deleteRecommendation");
 
 
 
@@ -11,5 +12,6 @@ module.exports = {
     listRecommendations,
     getRecommendation,
     voteRecommendation,
-    deleteVote
+    deleteVote,
+    deleteRecommendation
 };
