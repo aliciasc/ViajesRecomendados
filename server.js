@@ -52,8 +52,7 @@ app.put('/users/photo', isAuth, editUserPhoto);
 
 
 //Recommendations controllers
-const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation } = require('./controllers/recommendations');
-
+const { listRecommendations, getRecommendation, newRecommendation, voteRecommendation, deleteVote } = require('./controllers/recommendations');
 
 
 //Create recommendation.
@@ -73,6 +72,10 @@ const { newComment } = require('./controllers/comments');
 
 //Create comment.
 app.post('/comments/:idRecommendation/comment', isAuth, newComment);
+
+//Remove a vote.
+app.delete('/recommendations/:idRecommendation/vote', isAuth, deleteVote);
+
 
 
 
