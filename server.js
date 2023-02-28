@@ -72,7 +72,7 @@ app.post('/recommendations/:idRecommendation/vote', isAuth, voteRecommendation);
 const { newComment } = require('./controllers/comments');
 
 //Create comment.
-app.post('/comments', isAuth, newComment);
+app.post('/comments/:idRecommendation/comment', isAuth, newComment);
 
 
 

@@ -1,12 +1,12 @@
 const getDB = require('../../getDB');
 
-const newCommentQuery = async ( comment, idUser ) => {
+const newCommentQuery = async ( comment, idUser, idRecommendation) => {
     let connection;
 
     try {
         connection = await getDB();
 
-        const [comment] = await connection.query(
+        await connection.query(
             `INSERT INTO comment (comment, idUser, idRecommendation) VALUES (?, ?, ?)`,
             [ comment, idUser, idRecommendation ]
         );
