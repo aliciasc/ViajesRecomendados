@@ -4,18 +4,19 @@ const { generateError, saveImg} = require('../../helpers');
 const newComment = async (req, res, next) => {
     try {
         const { comment } = req.body;
+        const { idRecommendation } = req.params;
 
         if (!comment ) {
             generateError('Faltan campos', 400);
         }
 
-        // Creamos el comentario y obtenemos sus datos.
-        const Comment = await newCommentQuery( comment, req.user.id);
+        // Create comment and get the dates.
+        const Comment = await newCommentQuery( comment, req.user.id,idRecommendation);
 
         res.send({
             status: 'ok',
             data: {
-                comment
+                Comment
             },
         });
     } catch (err) {
